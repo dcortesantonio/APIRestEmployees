@@ -1,6 +1,7 @@
 package com.example.demo.Controladores;
 
 import com.example.demo.Modelos.Empleado;
+import com.example.demo.Modelos.EmpleadoRespuesta;
 import com.example.demo.Repositorios.EmpleadoRepositorio;
 import com.example.demo.Servicios.LecturaDatos;
 import org.apache.catalina.connector.ClientAbortException;
@@ -47,6 +48,10 @@ public class EmpleadoControlador {
         return repository.findTop5ByOrderBySalarioDesc();
     }
 
+    @GetMapping("/employees/GroupBy")
+    public Iterable<EmpleadoRespuesta> findGroupBy() {
+        return repository.findEmpleadoCount();
+    }
 
 
 }
