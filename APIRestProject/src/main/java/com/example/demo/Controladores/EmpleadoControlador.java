@@ -6,14 +6,10 @@ import com.example.demo.Repositorios.EmpleadoRepositorio;
 import com.example.demo.Servicios.LecturaDatos;
 import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
 @RestController
 public class EmpleadoControlador {
@@ -52,6 +48,7 @@ public class EmpleadoControlador {
     public Iterable<EmpleadoRespuesta> findGroupBy() {
         return repository.findEmpleadoCount();
     }
+
 
 
 }
