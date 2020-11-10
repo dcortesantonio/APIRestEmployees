@@ -2,6 +2,7 @@ package com.example.demo.Controladores;
 
 import com.example.demo.Modelos.Empleado;
 import com.example.demo.Repositorios.EmpleadoRepositorio;
+import com.example.demo.Servicios.LecturaDatos;
 import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -18,12 +19,30 @@ public class EmpleadoControlador {
 
     @Autowired
     private EmpleadoRepositorio repository;
+    @Autowired
+    private LecturaDatos servicio;
 
     @GetMapping("/employees")
     public Iterable<Empleado> getAllEmployees() {
         return repository.findAll();
     }
 
+    @RequestMapping(path = "/feedEmployees")
+    public void guardarDatos() throws IOException {
+        try{
+            servicio.LeerCsv();
+            System.out.print(" END READ FILE .CSV ");
+        }
+        catch (FileNotFoundException e){
+            throw new FileNotFoundException(" File .csv not found. ");
+        }
+        catch (ClientAbortException c)
+        {
+            throw new ClientAbortException("CC File .csv not found. ");
+
+        }
+
+    }
 
 
 }

@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface DepartamentoRepositorio extends CrudRepository<Departamento,Long> {
 
-
+    public Departamento findByNombreDepartamento(String nombreDepartamento);
 }
