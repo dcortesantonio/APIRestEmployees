@@ -13,5 +13,5 @@ import java.util.List;
 @Repository
 public interface EmpleadoRepositorio extends CrudRepository<Empleado, Long> {
 
-
+    public List<Empleado> findTop5ByOrderBySalarioDesc();
 }

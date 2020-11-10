@@ -39,10 +39,14 @@ public class EmpleadoControlador {
         catch (ClientAbortException c)
         {
             throw new ClientAbortException("CC File .csv not found. ");
-
         }
-
     }
+
+    @GetMapping("/employees/Top5")
+    public Iterable<Empleado> findTop5() {
+        return repository.findTop5ByOrderBySalarioDesc();
+    }
+
 
 
 }
